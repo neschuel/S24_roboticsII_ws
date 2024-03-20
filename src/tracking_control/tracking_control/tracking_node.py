@@ -206,11 +206,11 @@ class TrackingNode(Node):
         # feel free to modify the code structure, add more parameters, more input variables for the function, etc.
 
         ########### Write your code here ###########
-        desiredX = 0.6
+        desiredX = 0.5
         desiredY = 0.0
         currX = current_object_pose[0]
         currY = current_object_pose[1]
-        kpX = 1.0
+        kpX = 1.5
         kpY = 1.5
         errX = currX - desiredX
         errY = currY - desiredY
