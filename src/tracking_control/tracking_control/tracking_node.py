@@ -207,17 +207,17 @@ class TrackingNode(Node):
 
         ########### Write your code here ###########
         desiredX = 0.3
-        desiredY = 0
+        desiredY = 0.0
         currX = current_object_pose[0]
         currY = current_object_pose[1]
-        kpX = 3
-        kpY = 1
+        kpX = 3.0
+        kpY = 1.0
         errX = currX - desiredX
         errY = currY - desiredY
         # TODO: Update the control velocity command
         cmd_vel = Twist()
         cmd_vel.linear.x = kpX * (errX)
-        cmd_vel.linear.y = 0
+        cmd_vel.linear.y = 0.0
         cmd_vel.angular.z = kpY * (errY)
         return cmd_vel
 
