@@ -136,7 +136,7 @@ class TrackingNode(Node):
         if self.obj_pose is None:
             cmd_vel = Twist()
             cmd_vel.linear.x = 0.0
-            cmd_vel.angular.z = 0.05
+            cmd_vel.angular.z = 0.5
             self.pub_control_cmd.publish(cmd_vel)
             return
         
@@ -159,8 +159,8 @@ class TrackingNode(Node):
         desiredY = 0
         currX = current_object_pose[0]
         currY = current_object_pose[1]
-        kpX = 0.2
-        kpY = 0.01
+        kpX = 5
+        kpY = 2
         errX = currX - desiredX
         errY = currY - desiredY
         # TODO: Update the control velocity command
