@@ -201,6 +201,7 @@ class TrackingNode(Node):
         #################################################
 
     def controller(self, current_object_pose):
+        print(current_object_pose)
         # Instructions: You can implement your own control algorithm here
         # feel free to modify the code structure, add more parameters, more input variables for the function, etc.
 
