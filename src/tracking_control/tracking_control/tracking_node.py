@@ -178,7 +178,7 @@ class TrackingNode(Node):
     def timer_update(self):
         ################### Write your code here ###################
 
-        self.detected_obj_pose_callback()
+        # self.detected_obj_pose_callback()
 
         # Now, the robot stops if the object is not detected
         # But, you may want to think about what to do in this case
