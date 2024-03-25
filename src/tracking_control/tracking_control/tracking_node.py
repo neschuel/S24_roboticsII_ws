@@ -214,7 +214,7 @@ class TrackingNode(Node):
         
         kpX = 1.5
         kpY = 1.5
-        kiX = 1
+        kiX = 0.001
         errX = currX - desiredX
         errY = currY - desiredY
 
