@@ -213,8 +213,9 @@ class TrackingNode(Node):
         currY = current_object_pose[1]
         
         kpX = 1.0
-        kpY = 1.5
+        kpY = 0.5
         kiX = 0.01
+        kpTurn = 0.1
         errX = currX - desiredX
         errY = currY - desiredY
 
@@ -229,7 +230,7 @@ class TrackingNode(Node):
         cmd_vel = Twist()
         cmd_vel.linear.x = kpX * (errX) + kiX*(self.sumErrX)
         cmd_vel.linear.y = kpY * (errY)
-        cmd_vel.angular.z = kpY * (errY)
+        cmd_vel.angular.z = kpTurn * (errY)
         return cmd_vel
 
         ############################################
