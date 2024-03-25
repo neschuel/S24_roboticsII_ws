@@ -73,7 +73,7 @@ class TrackingNode(Node):
 
         # Current object pose
         self.obj_pose = None
-        self.sumErrx = 0
+        self.sumErrX = 0
 
         # ROS parameters
         self.declare_parameter("world_frame_id", "odom")
