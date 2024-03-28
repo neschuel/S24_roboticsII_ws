@@ -73,6 +73,7 @@ class TrackingNode(Node):
 
         # Current object pose
         self.obj_pose = None
+        self.sumErrX = 0
 
         # ROS parameters
         self.declare_parameter("world_frame_id", "odom")
@@ -210,15 +211,26 @@ class TrackingNode(Node):
         desiredY = 0.0
         currX = current_object_pose[0]
         currY = current_object_pose[1]
-        kpX = 1.5
-        kpY = 1.5
+        
+        kpX = 1.0
+        kpY = 0.5
+        kiX = 0.0001
+        kpTurn = 0.1
         errX = currX - desiredX
         errY = currY - desiredY
+
+        self.sumErrX += errX
+        if self.sumErrX > 100:
+            self.sumErrX = 100
+        elif self.sumErrX < -100:
+            self.sumErrX = -100
+    
+        
         # TODO: Update the control velocity command
         cmd_vel = Twist()
-        cmd_vel.linear.x = kpX * (errX)
-        cmd_vel.linear.y = 0.0
-        cmd_vel.angular.z = kpY * (errY)
+        cmd_vel.linear.x = kpX * (errX) + kiX*(self.sumErrX)
+        cmd_vel.linear.y = kpY * (errY)
+        cmd_vel.angular.z = kpTurn * (errY)
         return cmd_vel
 
         ############################################
